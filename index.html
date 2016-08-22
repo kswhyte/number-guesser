@@ -2,9 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <script src="scripts.js"></script>
+    <title>Number Guesser</title>
   </head>
   <body>
+    <h1>Number Guesser</h1>
+    <h3>Your last guess was...</h3>
+    <h2 id="number-generator">0<!-- where number is generated --></h2>
+    <h3 id="user-feedback">Are you feeling lucky today?</h3>
+
+    <input type="text" placeholder="Guess!" id="numberChosen">
+
+    <button type="button" onclick="generate()">Guess!</button>
+
+    <button type="button" onclick="end()">Clear Field</button>
+
+    <button type="button" onclick="reset()">Reset Game</button>
 
   </body>
 </html>
