@@ -1,4 +1,4 @@
-function end() {
+function clearBox() {
   document.getElementById("numberChosen").value = "";
 };
 
@@ -16,8 +16,8 @@ function generate () {
   else if (realInput < 1) {
     document.getElementById("user-feedback").innerHTML = "Your number is too low; try again.";
   }
-  else if (realInput === NaN) {
-    document.getElementById('user-feedback').innerHTML = "Test";
+  else if (isNaN(realInput)) {
+    document.getElementById('user-feedback').innerHTML = "Oops, you need to choose a number.";
   }
 
 };
