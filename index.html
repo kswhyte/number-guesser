@@ -2,28 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative|Lora|Merriweather|Playfair+Display|Slabo+27px" rel="stylesheet">
     <script src="scripts.js"></script>
     <title>Number Guesser</title>
   </head>
+
   <body onLoad="buttonsDisabled()">
-    <h1>Number Guesser</h1>
-    <h3>Your last guess was...</h3>
-    <h2 id="number-generator">N/A<!-- where number is generated --></h2>
-    <h3 id="user-feedback">Are you feeling lucky today?</h3>
+    <section id="hero">
+      <h1>Number Guesser</h1>
+      <h3>Your last guess was...</h3>
+      <h2 id="number-generator">X<!-- where number is generated --></h2>
+      <h3 id="user-feedback">Are you feeling <em>lucky</em> today?</h3>
 
-    <input id="numberInput" onKeyUp="buttonsEnabled()" onKeyDown="buttonsDisabled()" type="number" placeHolder="Guess!" min="1" max="100">
+      <input id="numberInput" onKeyUp="buttonsEnabled()" onKeyDown="buttonsDisabled()" type="number" placeHolder="Guess!" min="1" max="100">
 
-    <button type="button" onClick="generate()">Guess!</button>
-    <button id="clear-button" type="button" onClick="clearBox()">Clear Field</button>
-    <button id="reset-button" type="button" onClick="reset()">Reset Game</button>
+      <button type="button" onClick="generate()">Guess!</button>
+      <button id="clear-button" type="button" onClick="clearBox()">Clear Field</button>
+      <button id="reset-button" type="button" onClick="reset()">Reset Game</button>
 
-    <h3>Select Minimum and Maximum Range:</h3>
+      <h3>Select Minimum &#38; Maximum Range:</h3>
 
-    <input id="minimum" type="number" placeHolder="Minimum">
-    <input id="maximum" type="number" placeHolder="Maximum">
+      <input id="minimum" type="number" placeHolder="Minimum">
+      <input id="maximum" type="number" placeHolder="Maximum">
 
-    <button id="submit" type="button" onClick="reset();setRange()">Submit</button>
-
-
+      <button id="submit" type="button" onClick="reset();setRange()">Submit</button>
+    </section>
   </body>
 </html>
