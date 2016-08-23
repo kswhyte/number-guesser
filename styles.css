@@ -1,3 +1,57 @@
 .button-is-disabled {
   background-color: rgb(204, 200, 212);
 }
+
+body {
+  font-size: 1.25em;
+  font-family: 'Cinzel Decorative', cursive;
+  background-color: white;
+  text-align: center;
+}
+
+section {
+  background-color: #EBFFF8;
+  border: 10px solid black;
+  text-align: center;
+  margin: auto;
+  padding-bottom: 70px;
+  width: 800px;
+  border-radius: 3%;
+  /*opacity: 50%;*/
+}
+
+hero {
+  background: url('../images/oil-in-water.jpg') no-repeat center center fixed;
+  background-size: contain;
+  /*padding: 170px 0px;*/
+  margin-bottom: auto;
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  /*z-index: 90*/ 
+}
+
+h1 {
+  font-size: 3em;
+  text-shadow: 2px 2px 3px #734F30;
+}
+
+#number-generator {
+  background-color: #EDC69A;
+  font-size: 2.5em;
+  margin: auto;
+  position: center;
+  display: block;
+  padding: 60px;
+  border-radius: 20%;
+  width: 15%;
+  height: 35%;
+  z-index: 99;
+  box-shadow: 0px 0px 50px black inset;
+}
+
+#user-feedback {
+  color: #FFEE00;
+  text-shadow: 0.5px 0.5px 1px #734F30;
+}
