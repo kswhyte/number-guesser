@@ -5,19 +5,25 @@
     <script src="scripts.js"></script>
     <title>Number Guesser</title>
   </head>
-  <body>
+  <body onLoad="buttonsDisabled()">
     <h1>Number Guesser</h1>
     <h3>Your last guess was...</h3>
-    <h2 id="number-generator">0<!-- where number is generated --></h2>
+    <h2 id="number-generator">N/A<!-- where number is generated --></h2>
     <h3 id="user-feedback">Are you feeling lucky today?</h3>
 
-    <input type="text" placeholder="Guess!" id="numberChosen">
+    <input id="numberInput" onKeyUp="buttonsEnabled()" onKeyDown="buttonsDisabled()" type="number" placeHolder="Guess!" min="1" max="100">
 
-    <button type="button" onclick="generate()">Guess!</button>
+    <button type="button" onClick="generate()">Guess!</button>
+    <button id="clear-button" type="button" onClick="clearBox()">Clear Field</button>
+    <button id="reset-button" type="button" onClick="reset()">Reset Game</button>
 
-    <button type="button" onclick="clearBox()">Clear Field</button>
+    <h3>Select Minimum and Maximum Range:</h3>
 
-    <button type="button" onclick="reset()">Reset Game</button>
+    <input id="minimum" type="number" placeHolder="Minimum">
+    <input id="maximum" type="number" placeHolder="Maximum">
+
+    <button id="submit" type="button" onClick="reset();setRange()">Submit</button>
+
 
   </body>
 </html>
