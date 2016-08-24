@@ -58,3 +58,13 @@ h1 {
   color: #FFEE00;
   text-shadow: 0.5px 0.5px 1px #734F30;
 }
+
+#guess-button:hover, #clear-button:hover, #reset-button:hover, #submit-button:hover {
+  background-color: rgb(62, 54, 56);
+  color: white;
+}
+
+#range-setting {
+  font-size: 0.65em;
+  color: rgb(255, 92, 56);
+}

@@ -8,11 +8,15 @@ var minButton = document.getElementById("minimum"); // the number they enter as 
 var maxButton = document.getElementById("maximum"); // the number they enter as the new min
 var min = minButton.value || 0;
 var max = maxButton.value || 100;
+
+var storedNumber = randomNumber();
+// var randomNumberWin = randomNumber();
+
 function randomNumber() {
   var modifiedMin = Math.ceil(min);
   var modifiedMax = Math.ceil(max);
   return Math.floor(Math.random() * (modifiedMax - modifiedMin)) + modifiedMin;
-};
+}
 
 guessInput.addEventListener("keydown", function () {
   buttonsDisabled();
@@ -55,9 +59,9 @@ function reset () {
   document.getElementById("number-generator").innerHTML = "X";
   min = 0;
   max = 100;
+  storedNumber = randomNumber();
   // randomNumber = randomNumber();
-  // document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
-
+  document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
   //randomNumber();//
 }
 
@@ -68,8 +72,22 @@ guessButton.addEventListener("click", function () {
   clearBox();
 });
 
-var storedNumber = randomNumber();
-// var randomNumberWin = randomNumber();
+guessInput.addEventListener("keydown", function (key) {
+  if (key.keyCode === 13) {
+    document.getElementById("instructions").innerHTML = "Your last guess was...";
+    lastGuess.innerText = guessInput.value;
+    generate();
+    clearBox();
+  }
+});
+
+// $('body').keydown(function(e){
+//         if(e.keyCode == 114){
+//             $(this).css({'background':'red'});
+//         }
+//         if(e.keyCode == 121){
+//             $(this).css({'background':'yellow'});
+//         }
 
 function generate() {
   var numberTheyChose = guessInput.value;
@@ -95,13 +113,15 @@ function generate() {
     document.getElementById("user-feedback").innerHTML = "Your number is too low; try again.";
   }
   else if (realNumberTheyChose === storedNumber) {
+    clearBox();
     document.getElementById("user-feedback").innerHTML = "You win!!";
     max = max + 10;
     min = min - 10;
-    document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + "&#38; Maximum: " + max;
+    document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
     // storedNumber = randomNumberWin;
+    // randomNumber();
     storedNumber = randomNumber();
-    reset();
+    // buttonsEnabled();
   }
 } // end of generate()
 
@@ -117,8 +137,8 @@ function setRange () {
   var realTheirNewMax = parseInt(theirNewMax);
   min = realTheirNewMin;
   max = realTheirNewMax;
-  document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
-  //randomNumber();//
+  document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
+   //randomNumber();//
 
 }
 
