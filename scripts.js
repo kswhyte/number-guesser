@@ -5,14 +5,17 @@ var guessButton = document.getElementById("guess-button"); //the button they cli
 var submitButton = document.getElementById("submit-button"); // the button to change max/min values
 var minButton = document.getElementById("minimum"); // the number they enter as the new min
 var maxButton = document.getElementById("maximum"); // the number they enter as the new min
-var min = 0;
+var min = 1;
 var max = 100;
+var randomNumber = function () {
+  modifiedMin = Math.ceil(min);
+  modifiedMax = Math.ceil(max);
+  return Math.floor(Math.random() * (modifiedMax - modifiedMin)) + modifiedMin;
+};
 
-// document.onload=function () {
 guessInput.addEventListener("keydown", function () {
   buttonsDisabled();
 });
-// };
 
 guessInput.addEventListener("keyup", function () {
   buttonsEnabled();
@@ -59,8 +62,7 @@ guessButton.addEventListener("click", function () {
 function generate() {
   var numberTheyChose = guessInput.value;
   var realNumberTheyChose = parseInt(numberTheyChose);
-
-  //random number generator here?
+  var theNumber = randomNumber();
 
   if (realNumberTheyChose > max) {
     document.getElementById("user-feedback").innerHTML = "Your number is too high; try again.";
@@ -87,6 +89,8 @@ function setRange () {
   max = realTheirNewMax;
 }
 
+
+//if they guess the correct number, then max = max + 10;
 
 //submit: onClick="reset();setRange()
 
