@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative|Lora|Merriweather|Playfair+Display|Slabo+27px" rel="stylesheet">
-    <script src="scripts.js"></script>
     <title>Number Guesser</title>
   </head>
 
@@ -15,11 +14,11 @@
       <h2 id="number-generator">X<!-- where number is generated --></h2>
       <h3 id="user-feedback">Are you feeling <em>lucky</em> today?</h3>
 
-      <input id="numberInput" placeHolder="Guess!">
+      <input id="guess-input" placeHolder="Guess!" type="number">
 
-      <button type="button" id="guess-button">Guess!</button>
-      <button id="clear-button">Clear Field</button>
-      <button id="reset-button" onClick="reset()">Reset Game</button>
+      <button id="guess-button" type="button" >Guess!</button>
+      <button id="clear-button" type="button" disabled>Clear Field</button>
+      <button id="reset-button" type="button" disabled>Reset Game</button>
 
       <h3>Select Minimum &#38; Maximum Range:</h3>
 
@@ -28,5 +27,6 @@
 
       <button id="submit-button" type="button" onClick="reset();setRange()">Submit</button>
     </section>
+    <script src="scripts.js"></script>
   </body>
 </html>
