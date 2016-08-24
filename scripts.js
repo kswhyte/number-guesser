@@ -65,10 +65,16 @@ guessButton.addEventListener("click", function () {
   generate();
 });
 
+var randomNumber = randomNumber();
+
+
 function generate() {
   var numberTheyChose = guessInput.value;
   var realNumberTheyChose = parseInt(numberTheyChose);
-  var theNumber = randomNumber();
+  var storedNumber = randomNumber;
+  // var theNumber = randomNumber();
+
+  alert(storedNumber);
 
   if (realNumberTheyChose > max) {
     document.getElementById("user-feedback").innerHTML = "Your number is above the accepted range.";
@@ -79,13 +85,13 @@ function generate() {
   else if (isNaN(realNumberTheyChose)) {
     document.getElementById('user-feedback').innerHTML = "Oops, you need to choose a number.";
   }
-  else if (realNumberTheyChose > theNumber) {
+  else if (realNumberTheyChose > storedNumber) {
     document.getElementById("user-feedback").innerHTML = "Your number is too high; try again.";
   }
-  else if (realNumberTheyChose < theNumber) {
+  else if (realNumberTheyChose < storedNumber) {
     document.getElementById("user-feedback").innerHTML = "Your number is too low; try again.";
   }
-  else if (realNumberTheyChose === theNumber) {
+  else if (realNumberTheyChose === storedNumber) {
     document.getElementById("user-feedback").innerHTML = "You win!!";
     max = max + 10;
     min = min - 10;
