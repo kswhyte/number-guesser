@@ -1,6 +1,7 @@
 var guessInput = document.querySelector("#guess-input"); // number input field
 var clearButton = document.getElementById("clear-button");
 var resetButton = document.getElementById("reset-button");
+var lastGuess = document.getElementById("number-generator");
 var guessButton = document.getElementById("guess-button"); //the button they click to generate the number
 var submitButton = document.getElementById("submit-button"); // the button to change max/min values
 var minButton = document.getElementById("minimum"); // the number they enter as the new min
@@ -56,7 +57,11 @@ function reset () {
   max = 100;
 }
 
+
+
 guessButton.addEventListener("click", function () {
+  document.getElementById("instructions").innerHTML = "Your last guess was...";
+  lastGuess.innerText = guessInput.value;
   generate();
 });
 
@@ -66,10 +71,10 @@ function generate() {
   var theNumber = randomNumber();
 
   if (realNumberTheyChose > max) {
-    document.getElementById("user-feedback").innerHTML = "Your number is above the maximum range (default is 1-100).";
+    document.getElementById("user-feedback").innerHTML = "Your number is above the accepted range.";
   }
   else if (realNumberTheyChose < min) {
-    document.getElementById("user-feedback").innerHTML = "Your number is below the maximum range (default is 1-100).";
+    document.getElementById("user-feedback").innerHTML = "Your number is below the accepted range.";
   }
   else if (isNaN(realNumberTheyChose)) {
     document.getElementById('user-feedback').innerHTML = "Oops, you need to choose a number.";
