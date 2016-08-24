@@ -10,7 +10,7 @@
   <body>
     <section id="hero">
       <h1>Number Guesser</h1>
-      <h3>Your last guess was...</h3>
+      <h3 id="instructions">Choose a number between 1 and 100:</h3>
       <h2 id="number-generator">X<!-- where number is generated --></h2>
       <h3 id="user-feedback">Are you feeling <em>lucky</em> today?</h3>
 
@@ -24,6 +24,8 @@
 
       <input id="minimum" type="number" placeHolder="Minimum">
       <input id="maximum" type="number" placeHolder="Maximum">
+
+      <h3 id="range-setting">Minimum: 0 &#38; Maximum: 100</h3>
 
       <button id="submit-button" type="button">Submit</button>
     </section>
