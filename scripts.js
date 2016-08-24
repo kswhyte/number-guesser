@@ -52,7 +52,8 @@ function reset () {
   clearBox();
   document.getElementById("user-feedback").innerHTML = "Are you feeling lucky today?";
   document.getElementById("number-generator").innerHTML = "X";
-  //needs other stuff too
+  min = 1;
+  max = 100;
 }
 
 guessButton.addEventListener("click", function () {
@@ -65,13 +66,24 @@ function generate() {
   var theNumber = randomNumber();
 
   if (realNumberTheyChose > max) {
-    document.getElementById("user-feedback").innerHTML = "Your number is too high; try again.";
+    document.getElementById("user-feedback").innerHTML = "Your number is above the maximum range (default is 1-100).";
   }
   else if (realNumberTheyChose < min) {
-    document.getElementById("user-feedback").innerHTML = "Your number is too low; try again.";
+    document.getElementById("user-feedback").innerHTML = "Your number is below the maximum range (default is 1-100).";
   }
   else if (isNaN(realNumberTheyChose)) {
     document.getElementById('user-feedback').innerHTML = "Oops, you need to choose a number.";
+  }
+  else if (realNumberTheyChose > theNumber) {
+    document.getElementById("user-feedback").innerHTML = "Your number is too high; try again.";
+  }
+  else if (realNumberTheyChose < theNumber) {
+    document.getElementById("user-feedback").innerHTML = "Your number is too low; try again.";
+  }
+  else if (realNumberTheyChose === theNumber) {
+    document.getElementById("user-feedback").innerHTML = "You win!!";
+    max = max + 10;
+    min = min - 10;
   }
 } // end of generate()
 
@@ -88,18 +100,3 @@ function setRange () {
   min = realTheirNewMin;
   max = realTheirNewMax;
 }
-
-
-//if they guess the correct number, then max = max + 10;
-
-//submit: onClick="reset();setRange()
-
-
-//
-// function setRange () {
-//   var inputRange = document.getElementById("numberInput");
-//   var newMin = document.getElementById("minimum").value;
-//   var newMax = document.getElementById("maximum").value;
-//   inputRange.setAttribute("min", newMin);
-//   inputRange.setAttribute("max", newMax);
-// }
