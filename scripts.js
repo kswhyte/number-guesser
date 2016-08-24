@@ -6,11 +6,11 @@ var guessButton = document.getElementById("guess-button"); //the button they cli
 var submitButton = document.getElementById("submit-button"); // the button to change max/min values
 var minButton = document.getElementById("minimum"); // the number they enter as the new min
 var maxButton = document.getElementById("maximum"); // the number they enter as the new min
-var min = 1;
-var max = 100;
-var randomNumber = function () {
-  modifiedMin = Math.ceil(min);
-  modifiedMax = Math.ceil(max);
+var min = minButton.value || 0;
+var max = maxButton.value || 100;
+function randomNumber() {
+  var modifiedMin = Math.ceil(min);
+  var modifiedMax = Math.ceil(max);
   return Math.floor(Math.random() * (modifiedMax - modifiedMin)) + modifiedMin;
 };
 
@@ -53,8 +53,11 @@ function reset () {
   clearBox();
   document.getElementById("user-feedback").innerHTML = "Are you feeling lucky today?";
   document.getElementById("number-generator").innerHTML = "X";
-  min = 1;
+  min = 0;
   max = 100;
+  // randomNumber = randomNumber();
+  // document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
+
   //randomNumber();//
 }
 
@@ -62,15 +65,16 @@ guessButton.addEventListener("click", function () {
   document.getElementById("instructions").innerHTML = "Your last guess was...";
   lastGuess.innerText = guessInput.value;
   generate();
+  clearBox();
 });
 
-var randomNumber = randomNumber();
-
+var storedNumber = randomNumber();
+// var randomNumberWin = randomNumber();
 
 function generate() {
   var numberTheyChose = guessInput.value;
   var realNumberTheyChose = parseInt(numberTheyChose);
-  var storedNumber = randomNumber;
+  // var storedNumber = randomNumber();
   // var theNumber = randomNumber();
 
   alert(storedNumber);
@@ -94,7 +98,10 @@ function generate() {
     document.getElementById("user-feedback").innerHTML = "You win!!";
     max = max + 10;
     min = min - 10;
-    document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
+    document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + "&#38; Maximum: " + max;
+    // storedNumber = randomNumberWin;
+    storedNumber = randomNumber();
+    reset();
   }
 } // end of generate()
 
@@ -111,10 +118,16 @@ function setRange () {
   min = realTheirNewMin;
   max = realTheirNewMax;
   document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
-  randomNumber();
+  //randomNumber();//
+
 }
 
 
+// var randomNumber = function () {
+//   modifiedMin = Math.ceil(min);
+//   modifiedMax = Math.ceil(max);
+//   return Math.floor(Math.random() * (modifiedMax - modifiedMin)) + modifiedMin;
+// };
 
 // function rangeSetting (chosen-min, chosen-max) {
 //   "Present Minimum: " + "chosen-min" + "Maximum: "" + "chosen-max";
