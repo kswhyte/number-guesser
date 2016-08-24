@@ -55,9 +55,8 @@ function reset () {
   document.getElementById("number-generator").innerHTML = "X";
   min = 1;
   max = 100;
+  //randomNumber();//
 }
-
-
 
 guessButton.addEventListener("click", function () {
   document.getElementById("instructions").innerHTML = "Your last guess was...";
@@ -95,6 +94,7 @@ function generate() {
     document.getElementById("user-feedback").innerHTML = "You win!!";
     max = max + 10;
     min = min - 10;
+    document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
   }
 } // end of generate()
 
@@ -110,4 +110,12 @@ function setRange () {
   var realTheirNewMax = parseInt(theirNewMax);
   min = realTheirNewMin;
   max = realTheirNewMax;
+  document.getElementById("range-setting").innerHTML = "Present minimum: " + min + " " + "Present maximum: " + max;
+  randomNumber();
 }
+
+
+
+// function rangeSetting (chosen-min, chosen-max) {
+//   "Present Minimum: " + "chosen-min" + "Maximum: "" + "chosen-max";
+// }
