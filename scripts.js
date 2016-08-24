@@ -1,5 +1,4 @@
 var guessInput = document.querySelector("#guess-input");
-
 var clearButton = document.getElementById("clear-button");
 var resetButton = document.getElementById("reset-button");
 
@@ -26,19 +25,18 @@ function buttonsDisabled () {
     resetButton.disabled = true;
   }
 }
-// ________________________________
 
-document.onload=function () {
-  var cleared = document.getElementById("clear-button");
-  cleared.addEventListener("click", function () {
-    clearBox();
-  });
-};
+clearButton.addEventListener("click", function () {
+  clearBox();
+});
 
 function clearBox() {
-  document.getElementById("number-input").value = "";
-  //call disable function here
+  document.getElementById("guess-input").value = "";
+  buttonsDisabled();
 }
+
+// ------------------------
+
 function reset () {
   clearBox();
   document.getElementById("user-feedback").innerHTML = "Are you feeling lucky today?";
