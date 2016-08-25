@@ -138,6 +138,7 @@ function setRange () {
   min = realTheirNewMin;
   max = realTheirNewMax;
   document.getElementById("range-setting").innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
+  storedNumber = randomNumber();
    //randomNumber();//
 
 }
