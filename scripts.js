@@ -77,6 +77,7 @@ function changeMaxMinOnWin () {
 }
 
 function runOneTurnOfGame() {
+  alert(storedNumber);
   var numberTheyChose = getGuessInput();
   checkForValidNumber(numberTheyChose);
   compareGuessToRandomNumber(numberTheyChose, storedNumber);
