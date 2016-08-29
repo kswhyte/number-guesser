@@ -1,4 +1,5 @@
 var guessInput = document.getElementById("guess-input");
+var guessButton = document.getElementById("guess-button");
 var lastGuess = document.getElementById("number-generator");
 var instructions = document.getElementById("instructions");
 var userFeedback = document.getElementById("user-feedback");
@@ -21,7 +22,7 @@ function randomNumber() {
 guessButton.addEventListener("click", function () {
   instructions.innerHTML = "Your last guess was...";
   lastGuess.innerText = guessInput.value;
-  generate();
+  runOneTurnOfGame();
   clearField();
 });
 
@@ -29,7 +30,7 @@ guessInput.addEventListener("keydown", function (key) {
   if (key.keyCode === 13) {
     instructions.innerHTML = "Your last guess was...";
     lastGuess.innerText = guessInput.value;
-    generate();
+    runOneTurnOfGame();
     clearField();
   }
 });
@@ -39,8 +40,8 @@ function getGuessInput() {
 }
 
 function updateUserFeedback (feedback) {
-  userFeedback.innerHTML(feedback)
-};
+  userFeedback.innerHTML = feedback;
+}
 
 
 function compareGuessToRandomNumber (guessNumber, randomResult) {
@@ -54,10 +55,10 @@ function compareGuessToRandomNumber (guessNumber, randomResult) {
     updateUserFeedback("You win");
     changeMaxMinOnWin();
   }
-};
+}
 
 function checkForValidNumber (guessNumber) {
-  if (isNan(guessNumber)) {
+  if (isNaN(guessNumber)) {
     updateUserFeedback("Please choose a number.");
   }
   if (guessNumber > max) {
@@ -66,21 +67,20 @@ function checkForValidNumber (guessNumber) {
   if (guessNumber < min) {
     updateUserFeedback("Your number is below the accepted range.");
   }
-};
+}
 
 function changeMaxMinOnWin () {
   max = max + 10;
   min = min - 10;
   rangeSetting.innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
   storedNumber = randomNumber();
-};
+}
 
 function runOneTurnOfGame() {
   var numberTheyChose = getGuessInput();
   checkForValidNumber(numberTheyChose);
   compareGuessToRandomNumber(numberTheyChose, storedNumber);
   }
-}
 
 guessInput.addEventListener("keydown", function () {
   buttonsDisabled();
@@ -114,7 +114,7 @@ function clearField() {
 }
 
 resetButton.addEventListener("click", function () {
-  reset();
+  resetToOriginalState();
 });
 
 function resetToOriginalState () {
@@ -128,7 +128,7 @@ function resetToOriginalState () {
 }
 
 submitButton.addEventListener("click", function () {
-  reset();
+  resetToOriginalState();
   setRange();
 });
 
