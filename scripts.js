@@ -1,5 +1,4 @@
 var guessInput = document.getElementById("guess-input");
-var guessButton = document.getElementById("guess-button");
 var lastGuess = document.getElementById("number-generator");
 var instructions = document.getElementById("instructions");
 var userFeedback = document.getElementById("user-feedback");
@@ -35,31 +34,51 @@ guessInput.addEventListener("keydown", function (key) {
   }
 });
 
-function generate() {
-  var numberTheyChose = parseInt(guessInput.value);
-  
-  if (numberTheyChose > max) {
-    userFeedback.innerHTML = "Your number is above the accepted range.";
+function getGuessInput() {
+  return parseInt(guessInput.value);
+}
+
+function updateUserFeedback (feedback) {
+  userFeedback.innerHTML(feedback)
+};
+
+
+function compareGuessToRandomNumber (guessNumber, randomResult) {
+  if (guessNumber > randomResult) {
+    updateUserFeedback("Your number is too high; try again");
   }
-  else if (numberTheyChose < min) {
-    userFeedback.innerHTML = "Your number is below the accepted range.";
+  if (guessNumber < randomResult) {
+    updateUserFeedback("Your number is too low; try again");
   }
-  else if (isNaN(numberTheyChose)) {
-    userFeedback.innerHTML = "Oops, you need to choose a number.";
+  if (guessNumber === randomResult) {
+    updateUserFeedback("You win");
+    changeMaxMinOnWin();
   }
-  else if (numberTheyChose > storedNumber) {
-    userFeedback.innerHTML = "Your number is too high; try again.";
+};
+
+function checkForValidNumber (guessNumber) {
+  if (isNan(guessNumber)) {
+    updateUserFeedback("Please choose a number.");
   }
-  else if (numberTheyChose < storedNumber) {
-    userFeedback.innerHTML = "Your number is too low; try again.";
+  if (guessNumber > max) {
+    updateUserFeedback("Your number is above the accepted range.");
   }
-  else if (numberTheyChose === storedNumber) {
-    clearField();
-    userFeedback.innerHTML = "You win!!";
-    max = max + 10;
-    min = min - 10;
-    rangeSetting.innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
-    storedNumber = randomNumber();
+  if (guessNumber < min) {
+    updateUserFeedback("Your number is below the accepted range.");
+  }
+};
+
+function changeMaxMinOnWin () {
+  max = max + 10;
+  min = min - 10;
+  rangeSetting.innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
+  storedNumber = randomNumber();
+};
+
+function runOneTurnOfGame() {
+  var numberTheyChose = getGuessInput();
+  checkForValidNumber(numberTheyChose);
+  compareGuessToRandomNumber(numberTheyChose, storedNumber);
   }
 }
 
@@ -98,7 +117,7 @@ resetButton.addEventListener("click", function () {
   reset();
 });
 
-function reset () {
+function resetToOriginalState () {
   clearField();
   userFeedback.innerHTML = "Are you feeling lucky today?";
   lastGuess.innerHTML = "X";
@@ -114,12 +133,8 @@ submitButton.addEventListener("click", function () {
 });
 
 function setRange () {
-  var theirNewMin = minInput.value;
-  var realTheirNewMin = parseInt(theirNewMin);
-  var theirNewMax = maxInput.value;
-  var realTheirNewMax = parseInt(theirNewMax);
-  min = realTheirNewMin;
-  max = realTheirNewMax;
+  min = parseInt(minInput.value);
+  max = parseInt(maxInput.value);
   rangeSetting.innerHTML = "Minimum: " + min + " " + " &#38; Maximum: " + max;
   storedNumber = randomNumber();
 }
