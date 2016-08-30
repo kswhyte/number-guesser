@@ -27,7 +27,7 @@ guessButton.addEventListener("click", function () {
 });
 
 guessInput.addEventListener("keydown", function (key) {
-  if (key.keyCode === 13) {
+  if (key.keyCode === 13) { // the Enter key
     instructions.innerHTML = "Your last guess was...";
     lastGuess.innerText = guessInput.value;
     runOneTurnOfGame();
@@ -43,7 +43,6 @@ function updateUserFeedback (feedback) {
   userFeedback.innerHTML = feedback;
 }
 
-
 function compareGuessToRandomNumber (guessNumber, randomResult) {
   if (guessNumber > randomResult) {
     updateUserFeedback("Your number is too high; try again");
@@ -58,6 +57,7 @@ function compareGuessToRandomNumber (guessNumber, randomResult) {
 }
 
 function checkForValidNumber (guessNumber) {
+  // debugger;
   if (isNaN(guessNumber)) {
     updateUserFeedback("Please choose a number.");
   }
@@ -77,7 +77,6 @@ function changeMaxMinOnWin () {
 }
 
 function runOneTurnOfGame() {
-  alert(storedNumber);
   var numberTheyChose = getGuessInput();
   checkForValidNumber(numberTheyChose);
   compareGuessToRandomNumber(numberTheyChose, storedNumber);
