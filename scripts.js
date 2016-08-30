@@ -57,7 +57,6 @@ function compareGuessToRandomNumber (guessNumber, randomResult) {
 }
 
 function checkForValidNumber (guessNumber) {
-  // debugger;
   if (isNaN(guessNumber)) {
     updateUserFeedback("Please choose a number.");
   }
@@ -78,8 +77,8 @@ function changeMaxMinOnWin () {
 
 function runOneTurnOfGame() {
   var numberTheyChose = getGuessInput();
-  checkForValidNumber(numberTheyChose);
   compareGuessToRandomNumber(numberTheyChose, storedNumber);
+  checkForValidNumber(numberTheyChose);
   }
 
 guessInput.addEventListener("keydown", function () {
