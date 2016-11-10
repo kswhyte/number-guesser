@@ -1,4 +1,4 @@
-##Welcome to Number Guesser!
+# Welcome to Number Guesser!
 
 [Try it out!](https://kswhyte.github.io/number-guesser/)
 
@@ -41,23 +41,6 @@ Every time the user wins a round increase the maximum number by 10.
 Every time the user wins a round decrease the minimum number by 10.
 (Pro-tip: You’ll need to adjust the input fields to accept the new minimum and maximum numbers.)
 
-Rubric
-
 UX/UI Expectations
 
-4: Application is intuitive, well designed, and easy to use. Virtually no major improvements are needed in the UX or UI.
-3: Application shows strong effort towards simple, clean design, content organization, and well thought out experience and user interactions.
-2: Application meets basic best UX practices, but makes questionable design decisions that negatively impact the overall UX/UI.
-1: Application is lacking in basic best practices, and user struggles to understand how to use it.
-Functional Expectations
-
-4: Application meets all of the functional expectations in Phase Three
-3: Application meets all of the functional expectations in Phase Two
-2: Application meets all of the functional expectations in Phase One
-1: Application does not meet the requirements in Phase One
-Fundamental JavaScript Style
-
-4: Application demonstrates excellent knowledge of JavaScript syntax, style, and refactoring
-3: Application shows strong effort towards organization, content, and refactoring
-2: Application runs but the code has long functions, unnecessary or poorly named variables, and needs significant refactoring
-1: Application generates syntax error or crashes during execution
+Application is intuitive, well designed, and easy to use. Virtually no major improvements are needed in the UX or UI.
